@@ -1,4 +1,7 @@
-import colorRouter from "./routes/color.routes";
+import user from "./routes/user.routes";
+import design from "./routes/design.routes";
+import designUser from "./routes/designUser.routes";
+import persona from "./routes/persona.routes";
 
 import express from "express";
 
@@ -7,18 +10,10 @@ const port = 3000;
 
 app.use(express.json());
 
-//con este get obtenemos las prendas disponibles para personalizar.
-app.get("/prendas/:id", (req, res) => {
-  res.send("GET de prendas");
-});
-
-//con este get obtenemos los colores dispononibles para personalizar.
-app.use(colorRouter);
-
-//con este get obtenemos los diseños disponibles para las personalizaciones.
-app.get("/disenhos", (req, res) => {
-  res.send("GET de diseños");
-});
+app.use(design);
+app.use(user);
+app.use(designUser);
+app.use(persona);
 
 //con este get obtenemos los diseños personalizados por los usuarios.
 app.get("/personalizaciones/:usuarioId", (req, res) => {
