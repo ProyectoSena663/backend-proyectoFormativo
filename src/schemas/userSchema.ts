@@ -5,4 +5,5 @@ export interface Usuario {
     redSocialLogin : string,
 }
 
+// const newUser : Usuario = await crearNuevoUsuario(nombre, apellido, redSocialLogin);
 
