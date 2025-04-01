@@ -1,9 +1,7 @@
 import { z } from "zod";
 
 export const diseñoUsuarioSchema = z.object({
-  id_du: z
-    .string()
-    .regex(/^\d+$/, { message: "El ID debe ser un número positivo" }),
+  id_du: z.number().int().optional(),
   color_prenda: z
     .string()
     .min(1, { message: "El nombre del color es requerido" }),

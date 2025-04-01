@@ -1,9 +1,7 @@
 import { z } from "zod";
 
 export const personalizacionSchema = z.object({
-  id_per: z
-    .string()
-    .regex(/^\d+$/, { message: "El ID debe ser un número positivo" }),
+  id_per: z.number().int().optional(),
   parte_prenda: z.enum([
     "Cuello",
     "Brazalete",

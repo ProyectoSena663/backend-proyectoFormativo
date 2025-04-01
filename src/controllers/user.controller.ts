@@ -5,9 +5,7 @@ import { z } from "zod";
 
 //Validacion de ID
 const idSchema = z.object({
-  id: z
-    .string()
-    .regex(/^\d+$/, { message: "El ID debe ser un número positivo" }),
+  id_us: z.string().regex(/^\d+$/, "El ID debe ser un número entero"),
 });
 
 //crear un usuario
@@ -50,7 +48,12 @@ export const crearUsuario = async (req: Request, res: Response) => {
 //obtener todos los usuarios
 export const obtenerUsuarios = async (req: Request, res: Response) => {
   try {
-    const [result] = await pool.query("select * from Usuario");
+    const [result] = await pool.query(
+      "select id_us, nombre, apellido, red_social_login, IFNULL(fk_id_du, 0) AS fk_id_du from Usuario"
+    );
+
+    console.log("Usuarios obtenidos:", result);
+
     res.send(result);
   } catch (err) {
     console.error(err);
@@ -61,17 +64,30 @@ export const obtenerUsuarios = async (req: Request, res: Response) => {
 };
 
 //obtener un usuario por id
-export const obtenerUsuariosId = async (req: Request, res: Response) => {
+export const obtenerUsuariosId = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
   try {
-    const id = await pool.query("select * from Usuario where id = ?", [
-      req.params.id,
+    const { id } = req.params;
+
+    const validation = idSchema.safeParse({ id_us: id });
+    if (!validation.success) {
+      res.status(400).json({ error: validation.error.format() });
+    }
+
+    const [result] = await pool.query("SELECT * FROM Usuario WHERE id_us = ?", [
+      id,
     ]);
-    res.json(id);
+
+    if ((result as any).length === 0) {
+      res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.json(result);
   } catch (err) {
     console.error(err);
-    res.status(500).send({
-      message: "error al obtener el usuario por id",
-    });
+    res.status(500).send({ message: "Error al obtener el usuario por ID" });
   }
 };
 

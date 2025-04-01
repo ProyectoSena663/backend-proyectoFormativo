@@ -13,6 +13,7 @@ export const usuarioSchema = z.object({
     .max(100)
     .min(4, "Su apellido es muy corto"),
   red_social_login: z.string().optional(),
+  fk_id_du: z.number().optional()
 });
 
 export type usuarioType = z.infer<typeof usuarioSchema>;
