@@ -1,4 +1,4 @@
-import { number, z } from "zod";
+import { z } from "zod";
 
 export const diseñoUsuarioSchema = z.object({
   id_du: z

@@ -11,16 +11,13 @@ const idSchema = z.object({
 });
 
 //crear un usuario
-export const crearUsuario = async (
-  req: Request,
-  res: Response
-) => {
-  const { nombre, apellido, redSocialLogin } = req.body;
+export const crearUsuario = async (req: Request, res: Response) => {
+  const { nombre, apellido, red_social_login } = req.body;
   try {
     const result = usuarioSchema.safeParse({
       nombre,
       apellido,
-      redSocialLogin,
+      red_social_login,
     });
 
     if (!result.success) {
@@ -31,18 +28,16 @@ export const crearUsuario = async (
     const nuevoUsuario: usuarioType = result.data;
 
     const [dbresult] = await pool.query(
-      "insert into Usuario (nombre, apellido, redSocialLogin) values (?,?,?)",
+      "insert into Usuario (nombre, apellido, red_social_login) values (?,?,?)",
       [
         nuevoUsuario.nombre,
         nuevoUsuario.apellido,
         nuevoUsuario.red_social_login,
       ]
     );
+
     res.send({
-      id: dbresult,
-      nombre,
-      apellido,
-      redSocialLogin,
+      dbresult,
     });
   } catch (err) {
     console.error(err);

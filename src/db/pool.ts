@@ -7,7 +7,7 @@ const pool = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "",
-  database: "craft_your_style",
+  database: "CraftYourStyle",
   port: 3306,
   waitForConnections: true,
   connectionLimit: 10,
@@ -22,7 +22,7 @@ const verificarConexion = async () => {
   } catch (error: any) {
     console.error("Error al conectar con la base de datos", error.message);
   }
-};
+};  
 
 verificarConexion();
 

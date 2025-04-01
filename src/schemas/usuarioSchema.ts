@@ -1,9 +1,7 @@
 import { z } from "zod";
 
 export const usuarioSchema = z.object({
-  id_us: z
-    .string()
-    .regex(/^\d+$/, { message: "El ID debe ser un número positivo" }),
+  id_us: z.number().int().optional(),
   nombre: z
     .string()
     .nonempty("Ingrese su nombre")
