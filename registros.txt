@@ -1,0 +1,6 @@
+23/05/2025
+- Agregué archivo de repositorio de usuarios, de eso agregué register y del controller tambien y ya hice la ruta
+
+24/05/2025
+- Agregué el resto de rutasy funcionalidades, login con token, obtener todos los usuarios, obtener un usuario por id, actualizar usuario y eliminar un usuario
+- Agregué un nuevo Dto para la autorización del login

@@ -9,10 +9,11 @@ CREATE TABLE Usuario (
     id_us INT AUTO_INCREMENT PRIMARY KEY, 
     nombre VARCHAR(100) NOT NULL, 
     apellido VARCHAR(100) NOT NULL,
-    fecha_nacimiento timestamp null,
-    red_social_login VARCHAR(100)
+    email VARCHAR(100) NOT NULL UNIQUE,
+    fecha_nacimiento date null,
+    red_social_login VARCHAR(100),
+    password varchar(250) NOT NULL
 );
-
 
 CREATE TABLE Diseño (
     id_dis INT AUTO_INCREMENT PRIMARY KEY, 
