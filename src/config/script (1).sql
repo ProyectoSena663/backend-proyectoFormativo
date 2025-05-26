@@ -27,8 +27,8 @@ CREATE TABLE DiseñoUsuario (
     color_prenda VARCHAR(50), 
     dibujo boolean null default 0, 
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
-    tipo ENUM('camiseta', 'camisa', 'camibuso', 'buso', 'saco', 'esqueleto') NOT NULL, 
-    visibilidad ENUM('publico', 'privado') DEFAULT 'privado', 
+    tipo ENUM('Camiseta', 'Camisa', 'Camibuso', 'Buso', 'Saco', 'Esqueleto') NOT NULL, 
+    visibilidad ENUM('Publico', 'Privado') DEFAULT 'privado', 
 
     fk_id_usuario INT, 
     FOREIGN KEY (fk_id_usuario) REFERENCES Usuario(id_us) 

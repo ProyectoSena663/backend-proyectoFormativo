@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 export const generateToken = (propierties: any, key: any, minutes: number) =>
   jwt.sign(
@@ -8,4 +8,3 @@ export const generateToken = (propierties: any, key: any, minutes: number) =>
     },
     key
   );
-

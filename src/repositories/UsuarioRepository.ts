@@ -64,7 +64,6 @@ export class UsuarioRepository {
 
     const [resultDb]: any = await pool.query(query, values);
     return resultDb;
-
   }
 
   static async findByEmail(email: string) {
