@@ -1,0 +1,15 @@
+services:
+  usuario:
+    build: ./Usuario
+    ports:
+      - "10101:10101"
+    env_file:
+      - ./Usuario/.env
+      
+
+  disenousuario:
+    build: ./DisenoUsuario
+    ports:
+      - "10102:10102"
+    env_file:
+      - ./DisenoUsuario/.env
