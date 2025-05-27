@@ -1,14 +1,17 @@
 services:
   usuario:
-    build: ./Usuario
+    build: 
+      context: ./Usuario
+      dockerfile: dockerfile
     ports:
       - "10101:10101"
     env_file:
       - ./Usuario/.env
-      
 
   disenousuario:
-    build: ./DisenoUsuario
+    build:
+      context: ./DisenoUsuario
+      dockerfile: ./dockerfile
     ports:
       - "10102:10102"
     env_file:

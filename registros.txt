@@ -2,9 +2,13 @@
 - Agregué archivo de repositorio de usuarios, de eso agregué register y del controller tambien y ya hice la ruta
 
 24/05/2025
-- Agregué el resto de rutasy funcionalidades, login con token, obtener todos los usuarios, obtener un usuario por id, actualizar usuario y eliminar un usuario
+- Agregué el resto de rutas y funcionalidades, login con token, obtener todos los usuarios, obtener un usuario por id, actualizar usuario y eliminar un usuario
 - Agregué un nuevo Dto para la autorización del login
 
 26/05/2025
 - Agregue archivo de repositorio de DiseñoUsuario, no hice el de diseño primero porque necesitaba hacer esta tabla primero para despues sacar los datos con la otra tabla por medio de joins
 - Esta el Dto, controlador y 1 ruta, cuando llegue despues de clase hago las otras rutas
+
+27/05/2025
+- Samuel y yo divimos las carpetas por microservicios para que cada cosa tenga sus controladores, rutas y esté organizado
+- Le agregué lo del docker para ejecutar los servicios al mismo tiempo
