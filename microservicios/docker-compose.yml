@@ -19,7 +19,7 @@ services:
 
   diseno:
     build:
-      context: ./DisenoUsuario
+      context: ./Diseno
       dockerfile: dockerfile
     ports:
       - "10103:10103"

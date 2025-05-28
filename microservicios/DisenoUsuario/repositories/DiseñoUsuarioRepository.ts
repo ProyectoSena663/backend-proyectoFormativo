@@ -3,12 +3,13 @@ import pool from "../config/db-config";
 
 export class DiseñoUsuarioRepository {
   static async register(diseño: DiseñoUsuarioDto) {
-    const sql = `INSERT INTO disenoUsuario (color_prenda, dibujo, tipo, visibilidad) VALUES (?, ?, ?, ?)`;
+    const sql = `INSERT INTO disenoUsuario (color_prenda, dibujo, tipo, visibilidad, fk_id_usuario) VALUES (?, ?, ?, ?, ?)`;
     const values = [
       diseño.color_prenda,
       diseño.dibujo,
       diseño.tipo,
       diseño.visibilidad,
+      diseño.fk_id_usuario
     ];
     const [resultDb]: any = await pool.query(sql, values);
 

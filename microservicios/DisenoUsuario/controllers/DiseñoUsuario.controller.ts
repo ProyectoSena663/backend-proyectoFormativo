@@ -5,13 +5,15 @@ import { DiseñoUsuarioRepository } from "../repositories/DiseñoUsuarioReposito
 export class DiseñoUsuarioController {
   static async registerProduct(req: Request, res: Response) {
     try {
-      const { color_prenda, dibujo, tipo, visibilidad } = req.body;
+      const { color_prenda, dibujo, tipo, visibilidad, fk_id_usuario } =
+        req.body;
 
       const diseño = new DiseñoUsuarioDto(
         color_prenda,
         dibujo,
         tipo,
-        visibilidad
+        visibilidad,
+        fk_id_usuario
       );
 
       const newDiseño = await DiseñoUsuarioRepository.register(diseño);
@@ -25,6 +27,7 @@ export class DiseñoUsuarioController {
           tipo: newDiseño.tipo,
           visibilidad: newDiseño.visibilidad,
           fecha_creacion: newDiseño.fecha_creacion,
+          fk_id_usuario: newDiseño.fk_id_usuario,
         },
       });
     } catch (error) {
