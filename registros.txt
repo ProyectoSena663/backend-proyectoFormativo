@@ -12,3 +12,5 @@
 27/05/2025
 - Samuel y yo divimos las carpetas por microservicios para que cada cosa tenga sus controladores, rutas y esté organizado
 - Le agregué lo del docker para ejecutar los servicios al mismo tiempo
+- Agregué el resto de rutas a diseñoUsuario y creé la carpeta de diseño con sus archivos, solo creé la ruta para obtener datos
+- A todo lo que tenga ñ lo estoy poniendo con n porque me aparecían un poco de errores solo por eso

@@ -1,6 +1,6 @@
 services:
   usuario:
-    build: 
+    build:
       context: ./Usuario
       dockerfile: dockerfile
     ports:
@@ -16,3 +16,12 @@ services:
       - "10102:10102"
     env_file:
       - ./DisenoUsuario/.env
+
+  diseno:
+    build:
+      context: ./DisenoUsuario
+      dockerfile: dockerfile
+    ports:
+      - "10103:10103"
+    env_file:
+      - ./Diseno/.env
