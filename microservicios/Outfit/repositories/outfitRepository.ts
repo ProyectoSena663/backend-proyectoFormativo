@@ -1,4 +1,4 @@
-import {OutfitDTO} from "../DTO/outfitDTO";
+import {OutfitDTO} from "../DTO/outfitDto" //"
 import pool from "../config/db-config"; 
 
 export class OutfitRepository {
@@ -33,6 +33,30 @@ export class OutfitRepository {
         }else{
             throw new Error("Error al crear la outfit");
         }
+    } 
     
-    }  
+    static async deleteOutfit(id: number) {
+        const query = "DELETE FROM Outfit WHERE id_ou = ?";
+        const values = [id];
+        const [result]: any = await pool.query(query, values);
+        if (result.affectedRows > 0) {
+            return true;
+        } else {
+            throw new Error("Error al eliminar la outfit");
+        }
+    }
+
+    static async updateOutfit(id: number, outfit: OutfitDTO) {
+        const query = "UPDATE Outfit SET fk_id_per = ? WHERE id_ou = ?";
+        const values = [outfit.fk_id_per, id];
+        const [result]: any = await pool.query(query, values);
+        if (result.affectedRows > 0) {
+            return {
+                ...outfit,
+                id_ou: id,
+            };
+        } else {
+            throw new Error("Error al actualizar la outfit");
+        }
+    }
 }
