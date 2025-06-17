@@ -39,4 +39,27 @@ export class OutfitController {
             res.status(500).json({message: "error del servidor"});
         }
     }
+
+    static async actualizarOutfit(req: Request, res: Response): Promise<void> {
+        try{
+            const { id } = req.params;
+            const outfitDto: OutfitDTO = req.body;
+            const [outfit]: any = await OutfitRepository.updateOutfit(Number(id), outfitDto);
+            res.status(200).json(outfit);
+        }catch(error:any){
+            console.error(`error al actualizar el outfit: ${error.message}`);
+            res.status(500).json({message: "error del servidor"});
+        }
+    }
+
+    static async eliminarOutfit(req: Request, res: Response): Promise<void> {
+        try{
+            const { id } = req.params;
+            const [outfit]: any = await OutfitRepository.deleteOutfit(Number(id));
+            res.status(200).json(outfit);
+        }catch(error:any){
+            console.error(`error al eliminar el outfit: ${error.message}`);
+            res.status(500).json({message: "error del servidor"});
+        }
+    }
 }
