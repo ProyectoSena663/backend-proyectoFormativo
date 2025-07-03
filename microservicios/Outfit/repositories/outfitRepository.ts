@@ -3,14 +3,14 @@ import pool from "../config/db-config";
 
 export class OutfitRepository {
    static async getOutfitsById(id: number) {
-    const query = "SELECT * FROM Outfit WHERE id_du = ?";
-    const value = [id];
-    const [result]: any = await pool.query(query, value);
-    if (result.length === 0) {
-      return null;
+        const query = "SELECT * FROM Outfit WHERE id_du = ?";
+        const value = [id];
+        const [result]: any = await pool.query(query, value);
+        if (result.length === 0) {
+        return null;
+        }
+        return result[0];
     }
-    return result[0];
-  }
 
     static async getOutfits() {
         const query = "SELECT * FROM Outfit";
