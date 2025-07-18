@@ -1,4 +1,4 @@
-  import { IsEmail, IsOptional, IsString } from 'class-validator';
+  import { IsEmail, IsOptional, IsString, Min } from 'class-validator';
   export class UserDto {
     
     @IsOptional()
@@ -10,7 +10,7 @@
     @IsString({ message: 'El apellido debe ser una cadena de texto' })
     apellido: string;
 
-    @IsEmail()
+    @IsEmail({}, { message: 'El email debe ser un correo electrónico válido' })
     email: string;
 
     @IsOptional()
@@ -21,6 +21,7 @@
 
     @IsOptional()
     @IsString({ message: 'La contraseña debe ser una cadena de texto' })
+    @Min(6, { message: 'La contraseña debe tener al menos 6 caracteres' })
     password?: string;
 
     constructor(
