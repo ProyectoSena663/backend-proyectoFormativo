@@ -5,7 +5,7 @@ import { AuthDto } from "../Dto/AuthDto";
 import { generateToken } from "../helpers/generateToken";
 import dotenv from "dotenv";
 
-dotenv.config;
+dotenv.config();
 
 export class UsuarioController {
   static async createUser(req: Request, res: Response) {
