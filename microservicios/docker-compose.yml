@@ -25,3 +25,12 @@ services:
       - "10103:10103"
     env_file:
       - ./Diseno/.env
+    
+  outfit:
+    build:
+      context: ./Outfit
+      dockerfile: dockerfile
+    ports:
+      - "10104:10104"
+    env_file:
+      - ./Outfit/.env
