@@ -27,10 +27,10 @@
     password?: string;
 
     constructor(
-      nombre: string,
-      apellido: string,
       email: string,
-      fecha_nacimiento: Date,
+      nombre?: string,
+      apellido?: string,
+      fecha_nacimiento?: Date,
       red_social_login?: string,
       password?: string
     ) {

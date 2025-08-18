@@ -8,13 +8,19 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 10101;
 
-app.use(express.json());
+// CORS configuration - must be before other middleware
 app.use(
   cors({
-    origin: "http://localhost:5173", // o usa '*' solo para desarrollo
-    credentials: true, // si usas cookies o headers con auth
+    origin: ["http://localhost:5173", "http://localhost:3000"], // Allow multiple origins
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// JSON parsing with error handling
+app.use(express.json());
+
 app.use("/usuario", usuarioRouter);
 
 app.get("/", (req, res) => {

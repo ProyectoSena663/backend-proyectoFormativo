@@ -28,9 +28,9 @@ export class UsuarioController {
       }
 
       const user = new UserDto(
+        email,
         nombre,
         apellido,
-        email,
         fecha_nacimiento,
         red_social_login,
         password

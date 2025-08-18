@@ -2,7 +2,7 @@ services:
   usuario:
     build:
       context: ./Usuario
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "10101:10101"
     env_file:
@@ -11,7 +11,7 @@ services:
   disenousuario:
     build:
       context: ./DisenoUsuario
-      dockerfile: ./dockerfile
+      dockerfile: Dockerfile
     ports:
       - "10102:10102"
     env_file:
@@ -20,7 +20,7 @@ services:
   diseno:
     build:
       context: ./Diseno
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "10103:10103"
     env_file:
@@ -29,7 +29,7 @@ services:
   outfit:
     build:
       context: ./Outfit
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     ports:
       - "10104:10104"
     env_file:
