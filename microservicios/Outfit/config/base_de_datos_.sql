@@ -5,11 +5,12 @@ USE CraftYourStyle;
 
 CREATE TABLE Usuario (
     id_us INT AUTO_INCREMENT PRIMARY KEY, 
-    nombre VARCHAR(100) NOT NULL, 
-    apellido VARCHAR(100) NOT NULL,
-    fecha_nacimiento timestamp null,
+    nombre VARCHAR(100) NULL, 
+    apellido VARCHAR(100) NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    fecha_nacimiento date null,
     red_social_login VARCHAR(100),
-    password varchar(50) not null
+    password varchar(250) NOT NULL
 );
 
 CREATE TABLE Diseño (
