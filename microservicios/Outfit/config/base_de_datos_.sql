@@ -13,14 +13,14 @@ CREATE TABLE Usuario (
     password varchar(250) NOT NULL
 );
 
-CREATE TABLE Diseño (
+CREATE TABLE Diseno (
     id_dis INT AUTO_INCREMENT PRIMARY KEY, 
     fk_id_du INT, 
     FOREIGN KEY (fk_id_du) REFERENCES Usuario(id_us) 
 );
 
 
-CREATE TABLE DiseñoUsuario (
+CREATE TABLE DisenoUsuario (
     id_du INT AUTO_INCREMENT PRIMARY KEY, 
     color_prenda VARCHAR(50), 
     dibujo boolean null default 0, 
@@ -39,7 +39,7 @@ CREATE TABLE Personalizacion (
     parte_prenda_gorra enum("maya", "gorra plana", "gorra ovalada", "correa"),
     color VARCHAR(7) DEFAULT '#ffffff', 
     fk_id_du INT, 
-    FOREIGN KEY (fk_id_du) REFERENCES DiseñoUsuario(id_du) 
+    FOREIGN KEY (fk_id_du) REFERENCES DisenoUsuario(id_du) 
 );
 
 create table Outfit (

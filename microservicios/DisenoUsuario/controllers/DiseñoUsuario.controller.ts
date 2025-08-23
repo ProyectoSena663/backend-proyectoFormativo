@@ -13,7 +13,8 @@ export class DiseñoUsuarioController {
         dibujo,
         tipo,
         visibilidad,
-        fk_id_usuario
+        fk_id_usuario,
+        undefined
       );
 
       const newDiseño = await DiseñoUsuarioRepository.register(diseño);
