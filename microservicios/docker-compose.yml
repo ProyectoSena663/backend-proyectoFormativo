@@ -34,3 +34,12 @@ services:
       - "10104:10104"
     env_file:
       - ./Outfit/.env
+
+  personalizacion:
+    build:
+      context: ./Personalizacion
+      dockerfile: Dockerfile
+    ports:
+      - "10105:10105"
+    env_file:
+      - ./Personalizacion/.env
