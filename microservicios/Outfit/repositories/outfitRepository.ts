@@ -2,61 +2,35 @@ import {OutfitDTO} from "../DTO/outfitDto" //"
 import pool from "../config/db-config"; 
 
 export class OutfitRepository {
-   static async getOutfitsById(id: number) {
-        const query = "SELECT * FROM Outfit WHERE id_du = ?";
-        const value = [id];
-        const [result]: any = await pool.query(query, value);
-        if (result.length === 0) {
-        return null;
-        }
-        return result[0];
-    }
-
     static async getOutfits() {
-        const query = "SELECT * FROM Outfit";
-        const [result]: any = await pool.query(query, []);
-        if (result.length === 0) {
-        return null;
-        }
-        return result;
-    }
-
-    static async createOutfit(outfit: OutfitDTO) {
-        const query = "INSERT INTO Outfit (fk_id_per) VALUES (?)";
-        const values = [outfit.fk_id_per];
-        const [result]: any = await pool.query(query, values);
-        if (result.affectedRows > 0) {
-        return {
-            ...outfit,
-            id_ou: result.insertId,
-        }
-        }else{
-            throw new Error("Error al crear la outfit");
-        }
-    } 
-    
-    static async deleteOutfit(id: number) {
-        const query = "DELETE FROM Outfit WHERE id_ou = ?";
-        const values = [id];
-        const [result]: any = await pool.query(query, values);
-        if (result.affectedRows > 0) {
-            return true;
-        } else {
-            throw new Error("Error al eliminar la outfit");
-        }
-    }
-
-    static async updateOutfit(id: number, outfit: OutfitDTO) {
-        const query = "UPDATE Outfit SET fk_id_per = ? WHERE id_ou = ?";
-        const values = [outfit.fk_id_per, id];
-        const [result]: any = await pool.query(query, values);
-        if (result.affectedRows > 0) {
-            return {
-                ...outfit,
-                id_ou: id,
-            };
-        } else {
-            throw new Error("Error al actualizar la outfit");
+        try {
+            const sql = `
+            SELECT 
+                o.id_ou AS id_outfit,
+                u.nombre AS nombre_usuario,
+                u.id_us AS id_usuario,
+                du.id_du AS id_disenousuario,
+                du.dibujo,
+                du.fecha_creacion AS fecha_creacion_diseno,
+                du.visibilidad,
+                per.id_per AS id_personalizacion,
+                per.color AS color_personalizacion,
+                per.parte_prenda_camisa,
+                per.parte_prenda_pantalon,
+                per.parte_prenda_gorra
+            FROM Outfit o
+            JOIN Personalizacion per ON o.fk_id_per = per.id_per
+            JOIN DisenoUsuario du ON per.fk_id_du = du.id_du
+            JOIN Usuario u ON du.fk_id_usuario = u.id_us
+            WHERE u.id_us = 1
+            ORDER BY o.id_ou DESC;
+            `;
+            
+            const [rows]: any = await pool.query(sql);
+            return rows;
+        } catch (error) {
+            console.error("Error en getOutfits:", error);
+            throw error;
         }
     }
 }

@@ -44,6 +44,10 @@ CREATE TABLE Personalizacion (
 
 create table Outfit (
 	id_ou int auto_increment primary key,
+    fk_id_us int,
+    fk_id_du int,
     fk_id_per int,
-    foreign key (fk_id_per) references personalizacion(id_per)
+    foreign key (fk_id_per) references personalizacion(id_per),
+    foreign key (fk_id_du) references disenoUsuario(id_du),
+    foreign key (fk_id_us) references usuario(id_us)
 );
