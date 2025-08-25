@@ -34,8 +34,8 @@ CREATE TABLE DisenoUsuario (
 
 CREATE TABLE Personalizacion (
     id_per INT AUTO_INCREMENT PRIMARY KEY, 
-    parte_prenda_camisa ENUM('Cuello', 'Brazalete', 'Dobladillo inferior', 'Mangas', 'Interior', 'Fondo') NOT NULL, 
-    parte_prenda_pantalon enum("zona inferior", "entubado", "parches", "bota corta", "bota larga") not null,
+    parte_prenda_camisa ENUM('Cuello', 'Brazalete', 'Dobladillo inferior', 'Mangas', 'Interior', 'Fondo') NULL, 
+    parte_prenda_pantalon enum("zona inferior", "entubado", "parches", "bota corta", "bota larga") null,
     parte_prenda_gorra enum("maya", "gorra plana", "gorra ovalada", "correa"),
     color VARCHAR(7) DEFAULT '#ffffff', 
     fk_id_du INT, 
