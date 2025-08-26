@@ -19,11 +19,12 @@ export class OutfitRepository {
                 per.parte_prenda_pantalon,
                 per.parte_prenda_gorra
             FROM Outfit o
-            JOIN Personalizacion per ON o.fk_id_per = per.id_per
-            JOIN DisenoUsuario du ON per.fk_id_du = du.id_du
-            JOIN Usuario u ON du.fk_id_usuario = u.id_us
+            JOIN Usuario u ON o.fk_id_us = u.id_us
+            LEFT JOIN DisenoUsuario du ON o.fk_id_du = du.id_du
+            LEFT JOIN Personalizacion per ON o.fk_id_per = per.id_per
             WHERE u.id_us = 1
             ORDER BY o.id_ou DESC;
+
             `;
             
             const [rows]: any = await pool.query(sql);
